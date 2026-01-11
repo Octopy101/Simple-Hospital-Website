@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strife Healthcare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading MediCare Plus...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">+</div>
+                <span>StrifeCare </span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#journey">Patient Journey</a></li>
+                <li><a href="#testimonials">Stories</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#appointment">Book Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <a href="tel:911" class="emergency-btn">Emergency</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section-animate" id="home">
+        <div class="hero-content">
+            <h1>Your Health, Our Priority</h1>
+            <p>Experience world-class healthcare with cutting-edge technology and compassionate care. Available 24/7 for your well-being.</p>
+            <div class="cta-buttons">
+                <a href="#appointment" class="btn btn-primary">Book Appointment</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Cards -->
+    <div class="quick-access section-animate">
+        <div class="access-card" onclick="scrollToSection('appointment')">
+            <div class="card-icon">📅</div>
+            <h3>Book Appointment</h3>
+            <p>Schedule your visit online</p>
+        </div>
+        <div class="access-card" onclick="scrollToSection('services')">
+            <div class="card-icon">🏥</div>
+            <h3>Our Services</h3>
+            <p>Comprehensive healthcare</p>
+        </div>
+        <div class="access-card" onclick="scrollToSection('doctors')">
+            <div class="card-icon">👨‍⚕️</div>
+            <h3>Find a Doctor</h3>
+            <p>Expert medical professionals</p>
+        </div>
+        <div class="access-card" onclick="showEmergencyAlert()">
+            <div class="card-icon">🚑</div>
+            <h3>Emergency</h3>
+            <p>24/7 urgent care</p>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services section-animate" id="services">
+        <div class="section-header">
+            <h2>Our Medical Services</h2>
+            <p>Comprehensive healthcare solutions tailored to your needs</p>
+        </div>
+        <div class="services-grid" id="servicesGrid">
+            <div class="section-loading">
+                <div class="spinner"></div>
+                <p>Loading services...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Journey Section -->
+    <section class="patient-journey section-animate" id="journey">
+        <div class="section-header">
+            <h2>Your Medical Journey</h2>
+            <p>From consultation to recovery, we're with you every step of the way</p>
+        </div>
+        <div class="journey-container" id="journeyContainer">
+            <div class="section-loading">
+                <div class="spinner"></div>
+                <p>Loading journey steps...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Testimonials Section -->
+    <section class="testimonials section-animate" id="testimonials">
+        <div class="section-header">
+            <h2>Patient Stories</h2>
+            <p>Real experiences from our valued patients</p>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid">
+            <div class="section-loading">
+                <div class="spinner"></div>
+                <p>Loading patient stories...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment section-animate" id="appointment">
+        <div class="section-header">
+            <h2>Book an Appointment</h2>
+            <p>Schedule your visit with our expert medical team</p>
+        </div>
+        <div class="appointment-container">
+            <form id="appointmentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time *</label>
+                        <input type="time" id="time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="emergency">Emergency Medicine</option>
+                        <option value="general">General Medicine</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Notes</label>
+                    <textarea id="message" rows="4" placeholder="Please describe your symptoms or reason for visit..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Schedule Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors section-animate" id="doctors">
+        <div class="section-header">
+            <h2>Meet Our Doctors</h2>
+            <p>Experienced medical professionals dedicated to your health</p>
+        </div>
+        <div class="doctors-grid" id="doctorsGrid">
+            <div class="section-loading">
+                <div class="spinner"></div>
+                <p>Loading doctors...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About StrifeCare</h3>
+                <p>Leading healthcare provider committed to delivering exceptional medical services with compassion and excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#services">Services</a>
+                <a href="#journey">Patient Journey</a>
+                <a href="#testimonials">Patient Stories</a>
+                <a href="#doctors">Doctors</a>
+                <a href="#appointment">Appointments</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Medical Center Drive</p>
+                <p>📞 +254 705 754 097</p>
+                <p>✉️ info@medicareplus.com</p>
+                <p>🕐 24/7 Emergency Services</p>
+            </div>
+            <div class="footer-section">
+                <h3>Emergency</h3>
+                <p>For life-threatening emergencies:</p>
+                <p style="font-size: 1.5rem; color: var(--accent); font-weight: bold;">Call 911</p>
+                <p>or visit our Emergency Room</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MediCare Plus. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Appointment Scheduled!</h2>
+            <p>We've received your appointment request. A confirmation will be sent to your email shortly.</p>
+            <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
